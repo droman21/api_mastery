@@ -6,6 +6,7 @@ using api_collection.Models;
 using api_collection.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Cors;
 
 namespace api_collection.Controllers
 {

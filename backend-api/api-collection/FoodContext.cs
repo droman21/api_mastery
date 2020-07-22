@@ -29,15 +29,15 @@ namespace api_collection
                 new FoodType(3, "Beef")
                 );
             modelbuilder.Entity<Recipe>().HasData(
-                new Recipe(1, "Matar Paneer", ""),
-                new Recipe(1, "Black Bean Burger", ""),
-                new Recipe(1, "Ratatouille", ""),
-                new Recipe(2, "Chicken Enchiladas", ""),
-                new Recipe(2, "Chicken Parmesean", ""),
-                new Recipe(2, "Fried Chicken", ""),
-                new Recipe(3, "Angus Burger", ""),
-                new Recipe(3, "Steak", ""),
-                new Recipe(3, "Pot Roast", "")
+                new Recipe(2, "Matar Paneer", "", 1),
+                new Recipe(3, "Black Bean Burger", "",1),
+                new Recipe(4, "Ratatouille", "", 1),
+                new Recipe(5, "Chicken Enchiladas", "",2),
+                new Recipe(6, "Chicken Parmesean", "",2),
+                new Recipe(7, "Fried Chicken", "",2),
+                new Recipe(8, "Angus Burger", "",3),
+                new Recipe(9, "Steak", "",3),
+                new Recipe(10, "Pot Roast", "",3)
                 );
         }
     }

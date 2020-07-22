@@ -14,19 +14,20 @@ namespace api_collection.Models
         public string RecipeName { get; set; }
         public string RecipeImage { get; set; }
 
-        [JsonIgnore]
-        public virtual IEnumerable<FoodType> foodTypes { get; set; }
+        //[JsonIgnore]
+        public virtual FoodType FoodType { get; set; }
         public int FoodTypeId { get; set; }
 
         public Recipe()
         {
         }
 
-        public Recipe (int recipeId, string recipeName, string recipeImage)
+        public Recipe (int recipeId, string recipeName, string recipeImage, int foodTypeId)
         {
             this.RecipeId = recipeId;
             this.RecipeName = recipeName;
             this.RecipeImage = recipeImage;
+            this.FoodTypeId = foodTypeId;
         }
     }
 }
