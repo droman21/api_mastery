@@ -9,7 +9,7 @@ export default function FoodTypes(foodType) {
                     <a class="foodType_name" id="${foodType.id}"  href= "#"> ${foodType.name} </a>                     
                 </li>
             `
-        }).join("")}
+    }).join("")}
         </ul> 
         `
-    }
+}
