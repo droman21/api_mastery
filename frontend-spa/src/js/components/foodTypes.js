@@ -1,4 +1,4 @@
-export default function FoodTypes(foodType) {
+export default function FoodTypes(foodTypes) {
     return `
     <h1>${foodTypes.name}</h1>
      <ul class="foodtype_list">
