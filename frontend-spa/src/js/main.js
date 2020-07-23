@@ -7,6 +7,7 @@ import FoodType from './components/FoodType';
 import FoodTypes from './components/FoodTypes';
 import RecipePostSection from './components/RecipePostSection';
 import RecipeEdit from '.components/RecipeEdit';
+import Footer from './components/footer';
 
 const appDiv = document.querySelector('.app')
 
@@ -20,4 +21,26 @@ export default function pageBuild(){
 function header() {
     const header = document.querySelector('#header');
     header.innerHTML = Header();
+}
+function navHome() {
+    const homeButton = document.querySelector('.home__nav');
+    homeButton.addEventListener('click', function () {
+        appDiv.innerHTML ="fetch";
+    })
+}
+function navFoodTypes() {
+    const foodTypesButton = document.querySelector('.foodType__nav');
+    foodTypesButton.addEventListener('click', function () {
+    appDiv.innerHTML = "fetch"
+    })
+}
+function navRecipes() {
+    const recipesButton = document.querySelector('.recipes__nav');
+    recipesButton.addEventListener('click', function () {
+    appDiv.innerHTML = "fetch"        
+    })
+}
+function footer() {
+    const footerElement = document.querySelector('.footer');
+    footerElement.innerHTML = Footer();
 }

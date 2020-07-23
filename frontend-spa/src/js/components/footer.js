@@ -1,5 +1,5 @@
 export default function Footer() {
     return `
-    <div> Dan & Bern's Kitchen </div>
+    <div class="footer"> Dan & Bern's Kitchen </div>
     `
 }
