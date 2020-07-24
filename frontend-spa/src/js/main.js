@@ -141,86 +141,47 @@ appDiv.addEventListener('click', function () {
         )
     }
 })
-// 
 
-appDiv.addEventListener("click", function () {
-    if (event.target.classList.contains('recipe-item__edit')) {
-        const RecipeEditSection = document.querySelector('.recipe-item');
-        const recipeId = event.target.parentElement.querySelector('.recipe-item__id').id;
+appDiv.addEventListener("click", function(){
+    if(event.target.classList.contains('recipe-item__edit')){
+        const recipeId = event.target.parentElement.querySelector('.recipe-item__id').value;
         apiActions.getRequest(
             `https://localhost:44307/api/recipe/${recipeId}`,
             recipeEdit => {
-                RecipeEditSection.innerHTML = RecipeEditSection(artistId, albumEdit);
+                appDiv.innerHTML = RecipeEdit(recipeEdit);
+             }
+        )
+    }
+  })
+  
+  appDiv.addEventListener("click", function(){
+    if(event.target.classList.contains('edit-recipe__submit')){
+        const recipeId = event.target.parentElement.querySelector('.edit-recipe__id').value;
+        const recipeName = event.target.parentElement.querySelector('.edit-recipe__name').value;
+        const receipeFoodType = event.target.parentElement.querySelector('.edit-recipe__foodTypeID').value;
+        const recipeIngredients = event.target.parentElement.querySelector('.edit-recipe__Ingredients').value;
+        const cookTime = event.target.parentElement.querySelector('.edit-recipe__cookTime').value;
+
+        const recipeData = {
+            Name: recipeName,
+            Ingredients: recipeIngredients,
+            CookTime: cookTime,
+            Id: recipeId,
+            FoodTypeID: receipeFoodType
+  
+        };
+  
+        apiActions.putRequest(
+            `https://localhost:44307/api/recipe/${recipeId}`,
+            recipeData,
+            recipes => {
+                appDiv.innerHTML = Recipes(recipes);
             }
         )
     }
-})
+  })
 
-appDiv.addEventListener("click", function () {
-    if (event.target.classList.contains('edit-album__submit')) {
-        const albumId = event.target.parentElement.querySelector('.edit-album__albumId').value;
-        const albumName = event.target.parentElement.querySelector('.edit-album__albumName').value;
-        const imageName = event.target.parentElement.querySelector('.edit-album__albumImageName').value;
-        const releaseYear = event.target.parentElement.querySelector('.edit-album__releaseYear').value;
-        const recordLabel = event.target.parentElement.querySelector('.edit-album__recordLabel').value;
-        const genre = event.target.parentElement.querySelector('.edit-album__albumGenre').value;
-        const artistId = event.target.parentElement.querySelector('.edit-album__artistId').value;
-
-        const albumEdit = {
-            id: albumId,
-            Name: albumName,
-            ImageName: imageName,
-            ReleaseYear: releaseYear,
-            RecordLabel: recordLabel,
-            Genre: genre,
-            ArtistId: artistId
-        };
-
-        const artistCallback = () => {
-            apiActions.getRequest(
-                `https://localhost:44313/api/artist/${artistId}`,
-                artist => {
-                    appDiv.innerHTML = Artist(artist);
-                    albumNameButton();
-                })
-        }
-
-        apiActions.putRequest(
-            `https://localhost:44313/api/album/${albumId}`,
-            albumEdit,
-            artistCallback
-        )
-    }
-})
-
-appDiv.addEventListener("click", function () {
-    if (event.target.classList.contains('nav-artist-return__button')) {
-        const artistId = event.target.parentElement.querySelector(".nav-artist-return__button").id;
-        const endpoint = `https://localhost:44313/api/artist/${artistId}`;
-        const callBack = artist => {
-            appDiv.innerHTML = Artist(artist);
-            albumNameButton();
-        };
-        apiActions.getRequest(endpoint, callBack);
-    }
-})
-
-appDiv.addEventListener("click", function () {
-    if (event.target.classList.contains('delete-song__button')) {
-        const songId = event.target.parentElement.querySelector(".delete-song__button").id;
-        const albumId = event.target.parentElement.querySelector(".delete-song__button").value;
-        const endpoint = `https://localhost:44313/api/song/${songId}`;
-        const albumCallback = () => {
-            apiActions.getRequest(
-                `https://localhost:44313/api/album/${albumId}`,
-                album => {
-                    appDiv.innerHTML = Album(album);
-                })
-        }
-        apiActions.deleteRequest(endpoint, albumCallback);
-    }
-})
-
+//Current stopping point
 appDiv.addEventListener("click", function () {
     if (event.target.classList.contains('update-song__button')) {
         const editSongSection = document.querySelector('.edit-song');
@@ -234,51 +195,3 @@ appDiv.addEventListener("click", function () {
         )
     }
 })
-
-appDiv.addEventListener("click", function () {
-    if (event.target.classList.contains('edit-song__submit')) {
-        const songId = event.target.parentElement.querySelector(".edit-song__songId").value;
-        const albumId = event.target.parentElement.querySelector('.edit-song__albumId').value;
-        const songTitle = event.target.parentElement.querySelector('.edit-song__songTitle').value;
-        const songDuration = event.target.parentElement.querySelector('.edit-song__songDuration').value;
-        const songEdit = {
-            id: songId,
-            Title: songTitle,
-            Duration: songDuration,
-            AlbumId: albumId
-        };
-
-        const albumCallback = () => {
-            apiActions.getRequest(
-                `https://localhost:44313/api/album/${albumId}`,
-                album => {
-                    appDiv.innerHTML = Album(album);
-                    albumNameButton();
-                })
-        }
-
-        apiActions.putRequest(
-            `https://localhost:44313/api/song/${songId}`,
-            songEdit,
-            albumCallback
-        )
-    }
-})
-
-
-appDiv.addEventListener("click", function () {
-    if (event.target.classList.contains('delete-artist__button')) {
-        console.log("in delete artist");
-        const artistId = event.target.parentElement.querySelector(".delete-artist__button").id;
-        const endpoint = `https://localhost:44313/api/artist/${artistId}`;
-
-        apiActions.deleteRequest(
-            endpoint,
-            newArtists => {
-                console.log("22artistid=" + artistId);
-                appDiv.innerHTML = Artists(newArtists);
-                artistNameButton();
-            }
-        )
-
-    }
