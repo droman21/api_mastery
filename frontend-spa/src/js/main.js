@@ -98,12 +98,14 @@ appDiv.addEventListener('click', function () {
         const recipeImage = event.target.parentElement.querySelector(".create-recipe__Image").value;
         const recipeIngredients = event.target.parentElement.querySelector(".create-recipe__Ingredients").value;
         const cookTime = event.target.parentElement.querySelector('.create-recipe__cookTime').value;
+        const foodTypeId = event.target.parentElement.querySelector(".create-recipe__foodTypeId").value;
 
         var requestBody = {
             Name: recipeName,
             ImageName: recipeImage,
             Ingredients: recipeIngredients,
-            CookTime: cookTime
+            CookTime: cookTime,
+            Id: foodTypeId
         }
 
         apiActions.postRequest(
@@ -128,105 +130,27 @@ appDiv.addEventListener('click', function () {
 })
 
 appDiv.addEventListener('click', function () {
-    if (event.target.classList.contains('add-album__submit')) {
-        const albumName = event.target.parentElement.querySelector(".add-album__albumName").value;
-        const albumImageName = event.target.parentElement.querySelector(".add-album__albumImageName").value;
-        const albumReleaseYear = event.target.parentElement.querySelector(".add-album__releaseYear").value;
-        const albumRecordLabel = event.target.parentElement.querySelector(".add-album__recordLabel").value;
-        const albumGenre = event.target.parentElement.querySelector(".add-album__albumGenre").value;
-        const artistId = event.target.parentElement.querySelector(".add-album__artistId").value;
-
-        var requestBody = {
-            Name: albumName,
-            ImageName: albumImageName,
-            ReleaseYear: albumReleaseYear,
-            RecordLabel: albumRecordLabel,
-            Genre: albumGenre,
-            ArtistId: artistId
-        }
-
-        const recipeCallback = () => {
-            apiActions.getRequest(
-                `https://localhost:44307/api/foodtype/${foodtypeId}`,
-                artist => {
-                    appDiv.innerHTML = Artist(artist);
-                    albumNameButton();
-                })
-        }
-
-        apiActions.postRequest(
-            "https://localhost:44313/api/album",
-            requestBody,
-            recipeCallback
-        )
-    }
-})
-
-appDiv.addEventListener('click', function () {
-    if (event.target.classList.contains('add-song__button')) {
-        const addSongSection = document.querySelector('.add-song');
-        const albumId = event.target.parentElement.querySelector(".add-song__button").id;
-        addSongSection.innerHTML = SongPostSection(albumId);
-    }
-})
-
-appDiv.addEventListener('click', function () {
-    if (event.target.classList.contains('add-song__submit')) {
-        const songTitle = event.target.parentElement.querySelector(".add-song__songTitle").value;
-        const songDuration = event.target.parentElement.querySelector(".add-song__songDuration").value;
-        const albumId = event.target.parentElement.querySelector(".add-song__albumId").value;
-        var requestBody = {
-            Title: songTitle,
-            Duration: songDuration,
-            AlbumId: albumId
-        }
-
-        const albumCallback = () => {
-            apiActions.getRequest(
-                `https://localhost:44313/api/album/${albumId}`,
-                album => {
-                    appDiv.innerHTML = Album(album);
-                })
-        }
-
-        apiActions.postRequest(
-            "https://localhost:44313/api/song",
-            requestBody,
-            albumCallback
-        )
-    }
-})
-
-appDiv.addEventListener('click', function () {
-    if (event.target.classList.contains('delete-album__button')) {
-        const albumId = event.target.parentElement.querySelector('.delete-album__button').id;
-        const artistId = event.target.parentElement.querySelector('.artistId').value;
-
-        const artistCallback = () => {
-            apiActions.getRequest(
-                `https://localhost:44313/api/artist/${artistId}`,
-                artist => {
-                    appDiv.innerHTML = Artist(artist);
-                    albumNameButton();
-                })
-        }
+    if (event.target.classList.contains('recipe-item__delete')) {
+        const recipeId = event.target.parentElement.querySelector('.recipe-item__id').value;
 
         apiActions.deleteRequest(
-            `https://localhost:44313/api/album/${albumId}`,
-            artistCallback
+            `https://localhost:44307/api/recipe/${recipeId}`,
+            recipes => {
+                appDiv.innerHTML = Recipes(recipes);
+            }
         )
     }
 })
+// 
 
 appDiv.addEventListener("click", function () {
-    if (event.target.classList.contains('edit-album__button')) {
-        const editAlbumSection = document.querySelector('.edit-album');
-        const albumId = event.target.parentElement.querySelector('.edit-album__button').id;
-        const artistId = event.target.parentElement.querySelector('.artistId').value;
+    if (event.target.classList.contains('recipe-item__edit')) {
+        const RecipeEditSection = document.querySelector('.recipe-item');
+        const recipeId = event.target.parentElement.querySelector('.recipe-item__id').id;
         apiActions.getRequest(
-            `https://localhost:44313/api/album/${albumId}`,
-            albumEdit => {
-                editAlbumSection.innerHTML = AlbumEditSection(artistId, albumEdit);
+            `https://localhost:44307/api/recipe/${recipeId}`,
+            recipeEdit => {
+                RecipeEditSection.innerHTML = RecipeEditSection(artistId, albumEdit);
             }
         )
     }
