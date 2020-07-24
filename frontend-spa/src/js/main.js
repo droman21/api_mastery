@@ -1,14 +1,13 @@
 import Header from './components/Header';
 import Home from './components/Home';
 import apiActions from './components/apiActions';
-import Recipe from './components/Recipe';
 import Recipes from './components/Recipes';
 import FoodType from './components/FoodType';
 import FoodTypes from './components/FoodTypes';
 import RecipePostSection from './components/RecipePostSection';
-import RecipeEdit from '.components/RecipeEdit';
+import RecipeEdit from './components/RecipeEdit';
 import Footer from './components/footer';
-import recipe from './components/Recipe';
+import Recipe from './components/Recipe';
 
 const appDiv = document.querySelector('.app')
 
@@ -86,44 +85,45 @@ function foodTypesButton() {
 //     })
 // }
 
-appDiv.addEventListener('click', function () {
-    if (event.target.classList.contains('create-recipe_recipeName')) {
-        const addRecipeSection = document.querySelector('.create-recipe');
-        addRecipeSection.innerHTML = RecipePostSection();
-    }
-})
+// appDiv.addEventListener('click', function () {
+//     if (event.target.classList.contains('create-recipe_recipeName')) {
+//         const addRecipeSection = document.querySelector('.create-recipe');
+//         addRecipeSection.innerHTML = RecipePostSection();
+//     }
+// })
 
 appDiv.addEventListener('click', function () {
-    if (event.target.classList.contains('add-artist__submit')) {
-        const artistName = event.target.parentElement.querySelector(".add-artist__artistName").value;
-        const artistImageName = event.target.parentElement.querySelector(".add-artist__artistImageName").value;
-        const artistAge = event.target.parentElement.querySelector(".add-artist__artistAge").value;
-        const artistHomeTown = event.target.parentElement.querySelector(".add-artist__artistHomeTown").value;
+    if (event.target.classList.contains('create-recipe__submit')) {
+        const recipeName = event.target.parentElement.querySelector(".create-recipe__recipeName").value;
+        const recipeImage = event.target.parentElement.querySelector(".create-recipe__Image").value;
+        const recipeIngredients = event.target.parentElement.querySelector(".create-recipe__Ingredients").value;
+        const cookTime = event.target.parentElement.querySelector('.create-recipe__cookTime').value;
 
         var requestBody = {
-            Name: artistName,
-            ImageName: artistImageName,
-            Age: artistAge,
-            HomeTown: artistHomeTown
+            Name: recipeName,
+            ImageName: recipeImage,
+            Ingredients: recipeIngredients,
+            CookTime: cookTime
         }
 
         apiActions.postRequest(
-            "https://localhost:44313/api/artist",
+            "https://localhost:44307/api/foodtype",
             requestBody,
-            newArtists => {
-                appDiv.innerHTML = Artists(newArtists);
-                artistNameButton();
+            newRecipes => {
+                appDiv.innerHTML = Recipes(newRecipes);
+                recipeNameButton();
             }
         )
     }
 
 })
 
+//Current in progress marker
 appDiv.addEventListener('click', function () {
-    if (event.target.classList.contains('add-album__button')) {
-        const addAlbumSection = document.querySelector('.add-album');
-        const artistId = event.target.parentElement.querySelector(".add-album__button").id;
-        addAlbumSection.innerHTML = AlbumPostSection(artistId);
+    if (event.target.classList.contains('create-recipe__recipeName')) {
+        const addRecipeSection = document.querySelector('.create-recipe');
+        const foodTypeId = event.target.parentElement.querySelector(".create-recipe__submit").id;
+        addRecipeSection.innerHTML = RecipePostSection(foodTypeId);
     }
 })
 
@@ -145,9 +145,9 @@ appDiv.addEventListener('click', function () {
             ArtistId: artistId
         }
 
-        const artistCallback = () => {
+        const recipeCallback = () => {
             apiActions.getRequest(
-                `https://localhost:44313/api/artist/${artistId}`,
+                `https://localhost:44307/api/foodtype/${foodtypeId}`,
                 artist => {
                     appDiv.innerHTML = Artist(artist);
                     albumNameButton();
@@ -157,7 +157,7 @@ appDiv.addEventListener('click', function () {
         apiActions.postRequest(
             "https://localhost:44313/api/album",
             requestBody,
-            artistCallback
+            recipeCallback
         )
     }
 })

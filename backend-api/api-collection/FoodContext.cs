@@ -29,15 +29,15 @@ namespace api_collection
                 new FoodType(3, "Beef")
                 );
             modelbuilder.Entity<Recipe>().HasData(
-                new Recipe(2, "Matar Paneer", "", 1),
-                new Recipe(3, "Black Bean Burger", "",1),
-                new Recipe(4, "Ratatouille", "", 1),
-                new Recipe(5, "Chicken Enchiladas", "",2),
-                new Recipe(6, "Chicken Parmesean", "",2),
-                new Recipe(7, "Fried Chicken", "",2),
-                new Recipe(8, "Angus Burger", "",3),
-                new Recipe(9, "Steak", "",3),
-                new Recipe(10, "Pot Roast", "",3)
+                new Recipe(2, "Matar Paneer", "", "Cottage Cheese Cubes, Curry Sauce, Peas", "20 minutes", 1),
+                new Recipe(3, "Black Bean Burger", "", "Black Beans, Quinoa, Corn, Brown Rice, Lettuce, Tomato, Guac, Brioche Bun", "18 minutes", 1),
+                new Recipe(4, "Ratatouille", "", "Zucchini, Marinara Sauce, Squash, Onion", "15 minutes", 1),
+                new Recipe(5, "Chicken Enchiladas", "", "Chicken, Cheese, Beans, Tortillas, Enchilada Sauce, Rice, Chili", "75 minutes", 2),
+                new Recipe(6, "Chicken Parmesean", "", "Chicken, Mozzarella Cheese, Shredded Parmesean Cheese, Red Sauce, Pasta, Panko, Butter", "60 minutes", 2),
+                new Recipe(7, "Fried Chicken", "", "Chicken, Grease, Flour, Cayenne Pepper, Salt, Pepper, Butter Milk", "35 minutes", 2),
+                new Recipe(8, "Angus Burger", "", "Angus Beef, Bacon, Mayo, Ketchup, Lettuce, Tomato, Sesame Seed Bun", "17 minutes", 3),
+                new Recipe(9, "Steak", "", "USDA Prime Beef", "20 minutes", 3),
+                new Recipe(10, "Pot Roast", "", "Beef, Carrots, Celery, Potatos, Bay Leaf, Rosemary, Salt, Pepper, Beef Stock, Flour", "45 minutes", 3)
                 );
         }
     }
