@@ -1,6 +1,6 @@
 import Header from './components/Header';
 import Home from './components/Home';
-import apiActions from './components/apiActions';
+import apiActions from './api/apiActions';
 import Recipes from './components/Recipes';
 import FoodType from './components/FoodType';
 import FoodTypes from './components/FoodTypes';
@@ -18,9 +18,10 @@ export default function pageBuild() {
     navRecipes();
     footer();
     showFoodTypes();
+
 }
 function header() {
-    const header = document.querySelector('#header');
+    const header = document.querySelector('.header');
     header.innerHTML = Header();
 }
 function navHome() {
@@ -32,7 +33,7 @@ function navHome() {
 function navFoodTypes() {
     const foodTypesButton = document.querySelector('.foodType__nav');
     foodTypesButton.addEventListener('click', function () {
-        appDiv.innerHTML = "fetch"
+        showFoodTypes();
     })
 }
 function navRecipes() {
@@ -48,8 +49,8 @@ function footer() {
 function showFoodTypes() {
     fetch("https://localhost:44307/api/foodtype")
         .then(response => response.json())
-        .then(foodTypes => {
-            appDiv.innerHTML = FoodTypes(foodTypes);
+        .then(foodType => {
+            appDiv.innerHTML = FoodType(foodType);
             foodTypesButton();
         })
         .catch(err => console.log(err))
@@ -181,17 +182,33 @@ appDiv.addEventListener("click", function(){
     }
   })
 
-//Current stopping point
 appDiv.addEventListener("click", function () {
-    if (event.target.classList.contains('update-song__button')) {
-        const editSongSection = document.querySelector('.edit-song');
+    if (event.target.classList.contains('recipe-item__edit')) {
+        const editRecipeSection = document.querySelector('.edit-recipe');
         const songId = event.target.parentElement.querySelector('.update-song__button').id;
         const albumId = event.target.parentElement.querySelector('.update-song__button').value;
-        apiActions.getRequest(
-            `https://localhost:44313/api/song/${songId}`,
-            songEdit => {
-                editSongSection.innerHTML = SongEditSection(songEdit, albumId);
-            }
+        const albumEdit = {
+            id: albumId,
+            Name: albumName,
+            ImageName: imageName,
+            ReleaseYear: releaseYear,
+            RecordLabel: recordLabel,
+            Genre: genre,
+            ArtistId: artistId
+        };
+        const artistCallback = () => {
+            apiActions.getRequest(
+                `https://localhost:44313/api/artist/${artistId}`,
+                artist => {
+                    appDiv.innerHTML = Artist(artist);
+                    albumNameButton();
+                })
+        }
+
+        apiActions.putRequest(
+            `https://localhost:44313/api/album/${albumId}`,
+            albumEdit,
+            artistCallback
         )
     }
 })
