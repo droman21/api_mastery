@@ -49,8 +49,8 @@ function footer() {
 function showFoodTypes() {
     fetch("https://localhost:44307/api/foodtype")
         .then(response => response.json())
-        .then(foodType => {
-            appDiv.innerHTML = FoodType(foodType);
+        .then(foodTypes => {
+            appDiv.innerHTML = FoodTypes(foodTypes);
             foodTypesButton();
         })
         .catch(err => console.log(err))
