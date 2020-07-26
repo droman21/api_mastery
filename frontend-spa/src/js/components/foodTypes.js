@@ -5,7 +5,7 @@ export default function FoodTypes(foodTypes) {
         ${foodTypes.map(foodType => {
         return `
                 <li>
-                    <h4 class ="foodType__name" id="${foodType.foodTypeId}">${foodType.foodCategory}
+                    <h4 class ="foodType__category" id="${foodType.foodTypeId}">${foodType.foodCategory}</h4>
                     <p><img src="images/${foodType.image}" alt="image"></p>                   
                 </li>
             `
