@@ -1,0 +1,28 @@
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: black;
+    box-sizing: border-box;
+    background-color: #83b9ce;
+    margin: 0 auto;
+    max-width: 700px;
+    min-width: 600px;
+}
+nav {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    width: 100%;
+    position: fixed;
+    background-color: rgb(76, 75, 76);
+    margin: 0;
+    top: 0;
+    left: 0;
+    border-top: solid 4px;
+    border-bottom: solid 4px;
+    color: whitesmoke;
+}
+nav:hover {
+    background-color: honeydew;
+    opacity: .7;
+    color: black;
+}
