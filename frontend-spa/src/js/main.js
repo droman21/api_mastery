@@ -20,7 +20,10 @@ export default function pageBuild() {
     footer();
     showFoodTypes();
     showRecipes();
+    showRecipesFunction();
     showFoodTypesByRecipeID();
+    recipeLink();
+    foodTypeRecipesLink();
 
 }
 function header() {
@@ -200,41 +203,18 @@ appDiv.addEventListener("click", function(){
     }
 })
 
-// appDiv.addEventListener("click", function(){
-//     if (event.target.classList.contains('recipe-item__edit')) {
-//         const recipeId = event.target.parentElement.querySelector('.recipe-item__id').value;
-//         apiActions.getRequest(
-//             `https://localhost:44307/api/recipe/${recipeId}`,
-//             recipeEdit => {
-//                 appDiv.innerHTML = RecipeEdit(recipeEdit);
-//              }
-//         )
-//     }
-//   })
-  
-//   appDiv.addEventListener("click", function(){
-//     if(event.target.classList.contains('edit-recipe__submit')){
-//         const recipeId = event.target.parentElement.querySelector('.edit-recipe__id').value;
-//         const recipeName = event.target.parentElement.querySelector('.edit-recipe__name').value;
-//         const recipeFoodType = event.target.parentElement.querySelector('.edit-recipe__foodTypeID').value;
-//         const recipeIngredients = event.target.parentElement.querySelector('.edit-recipe__Ingredients').value;
-//         const cookTime = event.target.parentElement.querySelector('.edit-recipe__cookTime').value;
-
-//         const recipeData = {
-//             name: recipeName,
-//             ingredients: recipeIngredients,
-//             cookTime: cookTime,
-//             Id: recipeId,
-//             foodTypeID: recipeFoodType
-  
-//         };
-  
-//         apiActions.putRequest(
-//             `https://localhost:44307/api/recipe/${recipeId}`,
-//             recipeData,
-//             recipes => {
-//                 appDiv.innerHTML = Recipes(recipes);
-//             }
-//         )
-//     }
-//   })
+function foodTypeRecipesLink() {
+    const foodTypeRecipesLink = document.querySelector('.foodType__category');
+    foodTypeRecipesLink.addEventListener('click', function () {
+        showRecipesFunction();
+    })
+}
+function showRecipesFunction() {
+    fetch("https://localhost:44307/api/recipe")
+        .then(response => response.json())
+        .then(recipes => {
+            appDiv.innerHTML = Recipes(recipes);
+            recipesButton();
+        })
+        .catch(err => console.log(err))
+}

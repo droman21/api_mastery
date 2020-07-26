@@ -7,8 +7,7 @@ export default function FoodTypes(foodTypes) {
         <div id="recipes"
                 <ul><article>
                     <h2 class ="foodType__category" id="${foodType.foodTypeId}">${foodType.foodCategory}</h2>
-                    <img src="images/${foodType.recipeImage}" alt="image" style="width: 100px; height: 100px">
-                    <p><img src="images/${foodType.image}" alt="image"></p>                   
+                    <img src="images/${foodType.foodImage}" alt="image" style="width: 100px; height: 100px">                  
                 </ul></article>
         </div>
         `

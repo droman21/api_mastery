@@ -10,7 +10,7 @@ export default function Recipes(recipes){
                     <h4 class='recipe__cookTime'>Cook Time: ${recipe.cookTime}</h4>
                     <button class='recipe-item__edit'>Edit</button>
                     <button class='recipe-item__delete'>Delete</button>
-                    <input class='recipe-item__id' type="hidden" value='${recipe.recipeId}'>
+                    <input class='recipe-item__id' type="hidden" value='${recipe.recipeId}'><br><br>
                     <div class="recipe__image">
                     <img src="images/${recipe.recipeImage}" alt="image" style="width: 100px; height: 100px">
                     </div></ul></article>
