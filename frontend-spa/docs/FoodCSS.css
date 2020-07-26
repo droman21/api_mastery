@@ -56,3 +56,48 @@ section > p {
 section ul {
     padding-left: 1.5em;
 }
+.create-recipe__button{
+    background-color: rgb(219, 113, 14);
+    color: white;
+    border-radius: 8px;
+    padding: 10px 24px;
+    border: 2px solid black;
+    transition-duration: 0.1s;
+    font-weight: bold;
+}
+.create-recipe__button:hover{
+    background-color: yellow;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+}
+.recipe-item__edit{
+    background-color: rgb(71, 158, 75);
+    color: white;
+    border-radius: 8px;
+    padding: 10px 24px;
+    border: 2px solid black;
+    transition-duration: 0.1s;
+    font-weight: bold;
+}
+.recipe-item__edit:hover{
+    background-color: yellow;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+}
+.recipe-item__delete{
+    background-color: rgb(71, 158, 75);
+    color: white;
+    border-radius: 8px;
+    padding: 10px 24px;
+    border: 2px solid black;
+    transition-duration: 0.1s;
+    font-weight: bold;
+}
+.recipe-item__delete:hover{
+    background-color: yellow;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+}

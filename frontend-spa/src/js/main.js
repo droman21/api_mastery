@@ -201,7 +201,7 @@ appDiv.addEventListener("click", function(){
     if(event.target.classList.contains('edit-recipe__submit')){
         const recipeId = event.target.parentElement.querySelector('.edit-recipe__id').value;
         const recipeName = event.target.parentElement.querySelector('.edit-recipe__name').value;
-        const receipeFoodType = event.target.parentElement.querySelector('.edit-recipe__foodTypeID').value;
+        const recipeFoodType = event.target.parentElement.querySelector('.edit-recipe__foodTypeID').value;
         const recipeIngredients = event.target.parentElement.querySelector('.edit-recipe__Ingredients').value;
         const cookTime = event.target.parentElement.querySelector('.edit-recipe__cookTime').value;
 
@@ -210,7 +210,7 @@ appDiv.addEventListener("click", function(){
             ingredients: recipeIngredients,
             cookTime: cookTime,
             Id: recipeId,
-            foodTypeID: receipeFoodType
+            foodTypeID: recipeFoodType
   
         };
   
