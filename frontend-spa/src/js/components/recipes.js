@@ -1,6 +1,7 @@
 export default function Recipes(recipes){
     return `
         <h1><u>Recipes</h1></u>
+        <h2>Scroll down to add a new receipe or edit/delete an existing one</h2>
         <section class="recipe__list">
             ${recipes.map(recipe => {
                 return `
