@@ -24,9 +24,9 @@ namespace api_collection
         protected override void OnModelCreating(ModelBuilder modelbuilder)
         {
             modelbuilder.Entity<FoodType>().HasData(
-                new FoodType(1, "Vegetarian"),
-                new FoodType(2, "Chicken"),
-                new FoodType(3, "Beef")
+                new FoodType(1, "Vegetarian", "veggies.jpg"),
+                new FoodType(2, "Chicken", "chicken.jpg"),
+                new FoodType(3, "Beef", "beef.jpg")
                 );
             modelbuilder.Entity<Recipe>().HasData(
                 new Recipe(2, "Matar Paneer", "matarPaneer.jpg", "Cottage Cheese Cubes, Curry Sauce, Peas", "20 minutes", 1),

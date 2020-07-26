@@ -19,9 +19,9 @@ export default function Recipes(recipes){
         
                 `
             }).join("")}
-        <section class="create-recipe">
-        <button class="create-recipe__button">Add a Recipe</button>
-        </section>
-        </section>
+            <section class="create-recipe">
+            <button class="create-recipe__button">Add a Recipe</button>
+            </section>
+            </section>
     `;
 }

@@ -11,6 +11,7 @@ namespace api_collection.Models
     {
         public int Id { get; set; }
         public string FoodCategory { get; set; }
+        public string FoodImage { get; set; }
 
         public virtual IEnumerable<Recipe> recipes { get; set; }
 
@@ -18,10 +19,11 @@ namespace api_collection.Models
         {
 
         }
-        public FoodType(int id, string foodCategory)
+        public FoodType(int id, string foodCategory, string foodImage)
         {
             this.Id = id;
             this.FoodCategory = foodCategory;
+            this.FoodImage = foodImage;
         }
     }
 }
