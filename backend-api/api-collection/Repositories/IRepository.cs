@@ -9,9 +9,9 @@ namespace api_collection.Repositories
 {
     public interface IRepository<T> where T : class
     {
-        public IEnumerable<T> GetAll();
+        IEnumerable<T> GetAll();
         T GetById(int id);
-        void Create(T obj);
+        void Create(T entity);
         void Delete(T entity);
         void Update(T entity);
     }
