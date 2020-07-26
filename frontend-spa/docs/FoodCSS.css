@@ -1,5 +1,5 @@
 body {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     color: black;
     box-sizing: border-box;
     background-color: #83b9ce;
@@ -14,15 +14,45 @@ nav {
     width: 100%;
     position: fixed;
     background-color: rgb(76, 75, 76);
+    opacity:0.7;
     margin: 0;
     top: 0;
     left: 0;
+    font-weight: bold;
     border-top: solid 4px;
     border-bottom: solid 4px;
-    color: whitesmoke;
-}
-nav:hover {
-    background-color: honeydew;
-    opacity: .7;
     color: black;
+}
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: .5em 2em;
+}
+nav a:hover {
+    background-color: #666;
+}
+section {
+    margin: 1em 0;
+    padding-top: 3em;
+    min-height: 20em;
+}
+header, main, footer {
+    max-width: 800px;
+    margin: 0 auto;
+}
+header {
+    padding: 2em 0;
+}
+header h1 {
+    font-size: 3em;
+}
+header span {
+    font-size: 1.5em;
+    color: #999
+}
+section > p {
+    margin: 1em 0;
+}
+section ul {
+    padding-left: 1.5em;
 }
