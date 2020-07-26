@@ -31,6 +31,19 @@ nav a {
 nav a:hover {
     background-color: #666;
 }
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+}
+  
+.grid-item {
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
 section {
     margin: 1em 0;
     padding-top: 3em;
@@ -60,7 +73,7 @@ section ul {
     background-color: rgb(219, 113, 14);
     color: white;
     border-radius: 8px;
-    padding: 10px 24px;
+    padding: 11px 25px;
     border: 2px solid black;
     transition-duration: 0.1s;
     font-weight: bold;
@@ -75,7 +88,7 @@ section ul {
     background-color: rgb(71, 158, 75);
     color: white;
     border-radius: 8px;
-    padding: 10px 24px;
+    padding: 8px 14px;
     border: 2px solid black;
     transition-duration: 0.1s;
     font-weight: bold;
@@ -90,7 +103,7 @@ section ul {
     background-color: rgb(71, 158, 75);
     color: white;
     border-radius: 8px;
-    padding: 10px 24px;
+    padding: 8px 14px;
     border: 2px solid black;
     transition-duration: 0.1s;
     font-weight: bold;

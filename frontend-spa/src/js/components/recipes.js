@@ -5,6 +5,7 @@ export default function Recipes(recipes){
         <ul>
             ${recipes.map(recipe => {
                 return `
+                
                 <li>
                     <h2 class='recipe__name'>${recipe.recipeName}</h2>
                     <h4 class='recipe__ingredients'>${recipe.ingredients}</h4>

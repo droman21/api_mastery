@@ -16,16 +16,16 @@ namespace api_collection.Controllers
     {
         public IRepository<Recipe> recipeRepo;
 
-        public RecipeController(IRepository<Recipe> otherRepo)
+        public RecipeController(IRepository<Recipe> recipeRepo)
         {
-            this.recipeRepo = otherRepo;
+            this.recipeRepo = recipeRepo;
         }
 
         // GET: api/<RecipeController>
         [HttpGet]
-        public IEnumerable<Models.Recipe> Get()
+        public IEnumerable<Recipe> Get()
         {
-            return this.recipeRepo.GetAll();
+            return recipeRepo.GetAll();
         }
 
         // GET api/<RecipeController>/5
@@ -46,10 +46,13 @@ namespace api_collection.Controllers
 
         // PUT api/<RecipeController>/5
         [HttpPut("{id}")]
-        public IEnumerable<Recipe> Put(int id ,[FromBody] Recipe value)
+        public IEnumerable<Recipe> Put([FromBody] Recipe value)
         {
-            recipeRepo.Update(value);
+            Recipe recipe = recipeRepo.GetById(value.RecipeId);
+            recipe.RecipeName = value.RecipeName;
+            recipeRepo.Update(recipe);
             return recipeRepo.GetAll();
+
         }
 
         // DELETE api/<RecipeController>/5
