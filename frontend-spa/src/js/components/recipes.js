@@ -1,7 +1,7 @@
 export default function Recipes(recipes){
     return `
         <h1>Recipes</h1>
-        <ul>
+        <ul class="recipe__list">
             ${recipes.map(recipe => {
                 return `
                 <li>

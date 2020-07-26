@@ -18,6 +18,7 @@ export default function pageBuild() {
     navRecipes();
     footer();
     showFoodTypes();
+    showRecipes();
 
 }
 function header() {
@@ -27,25 +28,37 @@ function header() {
 function navHome() {
     const homeButton = document.querySelector('.home__nav');
     homeButton.addEventListener('click', function () {
-        appDiv.innerHTML = "fetch";
+        appDiv.innerHTML = Home();
     })
 }
 function navFoodTypes() {
-    const foodTypesButton = document.querySelector('.foodType__nav');
-    foodTypesButton.addEventListener('click', function () {
+    const foodTypesLink = document.querySelector('.foodType__nav');
+    foodTypesLink.addEventListener('click', function () {
         showFoodTypes();
     })
 }
 function navRecipes() {
-    const recipesButton = document.querySelector('.recipes__nav');
-    recipesButton.addEventListener('click', function () {
-        appDiv.innerHTML = "fetch"
+    const recipesLink = document.querySelector('.recipes__nav');
+    recipesLink.addEventListener('click', function () {
+        showRecipes();
     })
 }
+
 function footer() {
     const footerElement = document.querySelector('.footer');
     footerElement.innerHTML = Footer();
 }
+
+function showRecipes() {
+    fetch("https://localhost:44307/api/recipe")
+        .then(response => response.json())
+        .then(recipes => {
+            appDiv.innerHTML = Recipes(recipes);
+            recipesButton();
+        })
+        .catch(err => console.log(err))
+}
+
 function showFoodTypes() {
     fetch("https://localhost:44307/api/foodtype")
         .then(response => response.json())
@@ -67,6 +80,21 @@ function foodTypesButton() {
                 recipeButton(foodTypeId, foodType.foodCategory);
             };
             apiActions.getRequest(foodTypeEndpoint, foodTypeCallback);
+        })
+    })
+}
+
+function recipesButton() {
+    const RecipeElement = document.querySelectorAll('.recipe__list');
+    RecipeElement.forEach(element => {
+        element.addEventListener('click', function () {
+            const recipeId = element.id;
+            const recipeEndpoint = `https://localhost:44307/api/recipe/${recipeId}`;
+            const recipeCallback = recipe => {
+                appDiv.innerHTML = Recipe(recipe);
+                recipeButton(recipeId, foodType.foodCategory);
+            };
+            apiActions.getRequest(recipeEndpoint, recipeCallback);
         })
     })
 }
@@ -121,12 +149,14 @@ appDiv.addEventListener('click', function () {
 
 })
 
-//Current in progress marker
 appDiv.addEventListener('click', function () {
-    if (event.target.classList.contains('create-recipe__recipeName')) {
-        const addRecipeSection = document.querySelector('.create-recipe');
-        const foodTypeId = event.target.parentElement.querySelector(".create-recipe__submit").id;
-        addRecipeSection.innerHTML = RecipePostSection(foodTypeId);
+    const createRecipeSection = document.querySelector('.create-recipe');
+    if (event.target.classList.contains('create-recipe__button')) {
+        apiActions.getRequest('https://localhost:44307/api/recipe',
+        recipes => {
+            console.log(recipes)
+        createRecipeSection.innerHTML = RecipePostSection(foodTypes);
+        })
     }
 })
 
