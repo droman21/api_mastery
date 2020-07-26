@@ -31,6 +31,11 @@ nav a {
 nav a:hover {
     background-color: #666;
 }
+ul{
+    display: inline-block;
+    border: 1px solid #000;
+    padding: 20px;
+}
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
@@ -115,7 +120,7 @@ section ul {
     font-weight: bold;
 }
 .create-recipe__submit{
-    background-color: rgb(71, 158, 75);
+    background-color: rgb(219, 113, 14);
     color: white;
     border-radius: 8px;
     padding: 8px 14px;
@@ -143,4 +148,7 @@ section ul {
     color: black;
     cursor: pointer;
     font-weight: bold;
+}
+.create-recipe__submit{
+
 }

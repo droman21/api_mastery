@@ -1,14 +1,12 @@
-export default function RecipePostSection(recipes){
+export default function RecipePostSection(foodTypes){
     return `
-        <input class="create-recipe__recipeName" type="text" placeholder="Create a Recipe Here">
-        <input class="create-recipe__Ingredients" type="text">
-        <input class="create-recipe__cookTime" type="text">
-        <select class="create-recipe__foodTypes" type="dropdown">
-            ${recipes.map(recipe => {
+        <input class="create-recipe__recipeName" type="text" placeholder="Enter Recipe Name">
+        <input class="create-recipe__Ingredients" type="text" placeholder="Enter Ingredients">
+        <input class="create-recipe__cookTime" type="text" placeholder="Enter Cooktime">
+        <select class="create-recipe__foodCategory" type="dropdown">
+            ${foodTypes.map(foodType => {
                 return `
-                    <option class="create-recipe__recipeName" value="${recipe.recipeId}">${recipe.recipeName}</option>
-                    <h4 class="create-recipe__Ingredients">${recipe.ingredients}</h4>
-                    <h4 class="create-recipe__cookTime">${recipe.cookTime}</h4>
+                    <option class="create-recipe__recipeName" value="${foodType.foodTypeId}">${foodType.foodCategory}</option>
                 `
             }).join("")}
         </select>

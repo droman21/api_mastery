@@ -114,41 +114,41 @@ function recipesButton() {
     })
 }
 
-appDiv.addEventListener('click', function () {
-    if (event.target.classList.contains('create-recipe__submit')) {
-        const recipeName = event.target.parentElement.querySelector('.create-recipe__recipeName').value;
-        const recipeIngredients = event.target.parentElement.querySelector('.create-recipe__Ingredients').value;
-        const cookTime = event.target.parentElement.querySelector('.create-recipe__cookTime').value;
-        const recipeFoodType = event.target.parentElement.querySelector('.create-recipe__foodTypes').value;
-
-        var requestBody = {
-            Name: recipeName,
-            Ingredients: recipeIngredients,
-            cookTime: cookTime,
-            foodTypeId: recipeFoodType
-        }
-
-        apiActions.postRequest(
-            "https://localhost:44307/api/recipe",
-            requestBody,
-            recipes => {
-                appDiv.innerHTML = Recipes(recipes);
-            }
-        )
-    }
-
-})
-
-appDiv.addEventListener('click', function () {
+appDiv.addEventListener("click", function(){
     const createRecipeSection = document.querySelector('.create-recipe');
-    if (event.target.classList.contains('create-recipe__button')) {
-        apiActions.getRequest('https://localhost:44307/api/recipe',
-        foodTypes => {
-            console.log(recipes)
-        createRecipeSection.innerHTML = RecipePostSection(foodTypes);
-        })
+    if(event.target.classList.contains('create-recipe__button')){
+      apiActions.getRequest('https://localhost:44307/api/foodtype',
+      foodTypes => {
+      createRecipeSection.innerHTML= RecipePostSection(foodTypes);
+      })
     }
-})
+  })
+  
+  appDiv.addEventListener("click", function () {
+    if (event.target.classList.contains('create-album__submit')) {
+      const recipeName = event.target.parentElement.querySelector('.create-recipe__recipeName').value;
+      const recipeIngredients = event.target.parentElement.querySelector('.create-recipe__Ingredients').value;
+      const recipeCookTime = event.target.parentElement.querySelector('.create-recipe__cookTime').value;
+      const recipeFoodType = event.target.parentElement.querySelector('.create-recipe__foodCategory').value;
+  
+      console.log("Album name is" + albumName +" The artist is" + albumArtist);
+  
+      var requestBody = {
+        name: recipeName,
+        ingredients: recipeIngredients,
+        cookTime: recipeCookTime,
+        foodTypeId: recipeFoodType
+      }
+  
+      apiActions.postRequest(
+        "https://localhost:44307/api/recipe",
+        requestBody,
+        recipes => {
+            appDiv.innerHTML = Recipes(recipes);
+        }
+    )
+  }
+  })
 
 appDiv.addEventListener('click', function () {
     if (event.target.classList.contains('recipe-item__delete')) {
