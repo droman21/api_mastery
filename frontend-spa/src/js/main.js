@@ -114,28 +114,6 @@ function recipesButton() {
     })
 }
 
-// function recipeNameButton(foodTypeId, foodCategory) {
-//     const recipeNameElement = document.querySelectorAll('.foodtype-recipe');
-//     recipeNameElement.forEach(element => {
-//         element.addEventListener('click', function () {
-//             const recipeId = element.id;
-//             const endpoint = `https://localhost:44307/api/recipe/${recipeId}`;
-//             const foodTypeCallback = foodType => {;
-//             const callBack = recipe => {
-//                 appDiv.innerHTML = Recipe(recipe);
-//             };
-//             apiActions.getRequest(endpoint, callBack);
-//         })
-//     })
-// }
-
-// appDiv.addEventListener('click', function () {
-//     if (event.target.classList.contains('create-recipe_recipeName')) {
-//         const addRecipeSection = document.querySelector('.create-recipe');
-//         addRecipeSection.innerHTML = RecipePostSection();
-//     }
-// })
-
 appDiv.addEventListener('click', function () {
     if (event.target.classList.contains('create-recipe__submit')) {
         const recipeName = event.target.parentElement.querySelector('.create-recipe__recipeName').value;
@@ -186,34 +164,32 @@ appDiv.addEventListener('click', function () {
 })
 
 appDiv.addEventListener("click", function(){
-    if (event.target.classList.contains('recipe-item__edit')) {
+    if(event.target.classList.contains('recipe-item__edit')){
         const recipeId = event.target.parentElement.querySelector('.recipe-item__id').value;
         apiActions.getRequest(
             `https://localhost:44307/api/recipe/${recipeId}`,
             recipeEdit => {
                 appDiv.innerHTML = RecipeEdit(recipeEdit);
-             }
-        )
+            })
     }
-  })
-  
-  appDiv.addEventListener("click", function(){
+})
+
+appDiv.addEventListener("click", function(){
     if(event.target.classList.contains('edit-recipe__submit')){
         const recipeId = event.target.parentElement.querySelector('.edit-recipe__id').value;
-        const recipeName = event.target.parentElement.querySelector('.edit-recipe__name').value;
-        const recipeFoodType = event.target.parentElement.querySelector('.edit-recipe__foodTypeID').value;
-        const recipeIngredients = event.target.parentElement.querySelector('.edit-recipe__Ingredients').value;
-        const cookTime = event.target.parentElement.querySelector('.edit-recipe__cookTime').value;
+        const recipeName = event.target.parentElement.querySelector('.edit-todo__name').value;
+        const recipeFoodType = event.target.parentElement.querySelector('.edit-recipe__foodType').value;
+        const recipeIngredients = event.target.parentElement.querySelector('.edit-recipe__ingredients').value;
+        const recipeCookTime = event.target.parentElement.querySelector('.edit-recipe__cookTime').value;
 
         const recipeData = {
+            id: recipeId,
             name: recipeName,
+            foodTypeId: recipeFoodType,
             ingredients: recipeIngredients,
-            cookTime: cookTime,
-            Id: recipeId,
-            foodTypeID: recipeFoodType
-  
-        };
-  
+            cookTime: recipeCookTime
+            };
+
         apiActions.putRequest(
             `https://localhost:44307/api/recipe/${recipeId}`,
             recipeData,
@@ -222,4 +198,43 @@ appDiv.addEventListener("click", function(){
             }
         )
     }
-  })
+})
+
+// appDiv.addEventListener("click", function(){
+//     if (event.target.classList.contains('recipe-item__edit')) {
+//         const recipeId = event.target.parentElement.querySelector('.recipe-item__id').value;
+//         apiActions.getRequest(
+//             `https://localhost:44307/api/recipe/${recipeId}`,
+//             recipeEdit => {
+//                 appDiv.innerHTML = RecipeEdit(recipeEdit);
+//              }
+//         )
+//     }
+//   })
+  
+//   appDiv.addEventListener("click", function(){
+//     if(event.target.classList.contains('edit-recipe__submit')){
+//         const recipeId = event.target.parentElement.querySelector('.edit-recipe__id').value;
+//         const recipeName = event.target.parentElement.querySelector('.edit-recipe__name').value;
+//         const recipeFoodType = event.target.parentElement.querySelector('.edit-recipe__foodTypeID').value;
+//         const recipeIngredients = event.target.parentElement.querySelector('.edit-recipe__Ingredients').value;
+//         const cookTime = event.target.parentElement.querySelector('.edit-recipe__cookTime').value;
+
+//         const recipeData = {
+//             name: recipeName,
+//             ingredients: recipeIngredients,
+//             cookTime: cookTime,
+//             Id: recipeId,
+//             foodTypeID: recipeFoodType
+  
+//         };
+  
+//         apiActions.putRequest(
+//             `https://localhost:44307/api/recipe/${recipeId}`,
+//             recipeData,
+//             recipes => {
+//                 appDiv.innerHTML = Recipes(recipes);
+//             }
+//         )
+//     }
+//   })

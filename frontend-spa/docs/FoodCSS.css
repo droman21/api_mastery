@@ -114,3 +114,33 @@ section ul {
     cursor: pointer;
     font-weight: bold;
 }
+.create-recipe__submit{
+    background-color: rgb(71, 158, 75);
+    color: white;
+    border-radius: 8px;
+    padding: 8px 14px;
+    border: 2px solid black;
+    transition-duration: 0.1s;
+    font-weight: bold;
+}
+.create-recipe__submit:hover{
+    background-color: yellow;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+}
+.edit-recipe__submit{
+    background-color: rgb(71, 158, 75);
+    color: white;
+    border-radius: 8px;
+    padding: 8px 14px;
+    border: 2px solid black;
+    transition-duration: 0.1s;
+    font-weight: bold;
+}
+.edit-recipe__submit:hover{
+    background-color: yellow;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+}
