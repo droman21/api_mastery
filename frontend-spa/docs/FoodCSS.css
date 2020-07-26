@@ -149,6 +149,19 @@ section ul {
     cursor: pointer;
     font-weight: bold;
 }
-.create-recipe__submit{
-
+#recipes{
+    display: grid;
+    grid-template-columns: 60px 60px
+    grid-template-rows: auto;
+    grid-column-gap: 1em;
+    border: 1px solid black;
+}
+#recipes article{
+    background: #ccc;
+    padding: 1em;
+}
+#recipes article img{
+    width: 100%;
+    background: #ccc;
+    border: 1px solid #333;
 }

@@ -125,7 +125,7 @@ appDiv.addEventListener("click", function(){
   })
   
   appDiv.addEventListener("click", function () {
-    if (event.target.classList.contains('create-album__submit')) {
+    if (event.target.classList.contains('create-recipe__submit')) {
       const recipeName = event.target.parentElement.querySelector('.create-recipe__recipeName').value;
       const recipeIngredients = event.target.parentElement.querySelector('.create-recipe__Ingredients').value;
       const recipeCookTime = event.target.parentElement.querySelector('.create-recipe__cookTime').value;
