@@ -1,15 +1,17 @@
 export default function FoodTypes(foodTypes) {
     return `
-    <h1>${foodTypes.name}</h1>
-     <ul class="foodtype_list">
+    <h1><u>Food Categories</h1></u>
+    <h2>Click a food category below to view all of its recipes</h2>
+    <class="foodtype__list">
         ${foodTypes.map(foodType => {
         return `
-                <li>
-                   <p> <img src="images/${foodType.image}" alt="image"> </p>
-                    <a class="foodType_name" id="${foodType.id}"  href= "#"> ${foodType.name} </a>                     
-                </li>
-            `
+        <div id="recipes"
+                <ul><article>
+                    <h2 class ="foodType__category" id="${foodType.foodTypeId}">${foodType.foodCategory}</h2>
+                    <img src="images/${foodType.foodImage}" alt="image" style="width: 100px; height: 100px">                  
+                </ul></article>
+        </div>
+        `
     }).join("")}
-        </ul> 
         `
 }

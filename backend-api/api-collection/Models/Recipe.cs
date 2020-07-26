@@ -13,6 +13,8 @@ namespace api_collection.Models
         public int RecipeId { get; set; }
         public string RecipeName { get; set; }
         public string RecipeImage { get; set; }
+        public string Ingredients { get; set; }
+        public string CookTime { get; set; }
 
         //[JsonIgnore]
         public virtual FoodType FoodType { get; set; }
@@ -22,11 +24,13 @@ namespace api_collection.Models
         {
         }
 
-        public Recipe (int recipeId, string recipeName, string recipeImage, int foodTypeId)
+        public Recipe (int recipeId, string recipeName, string recipeImage, string recipeIngredients, string cookTime, int foodTypeId)
         {
             this.RecipeId = recipeId;
             this.RecipeName = recipeName;
             this.RecipeImage = recipeImage;
+            this.Ingredients = recipeIngredients;
+            this.CookTime = cookTime;
             this.FoodTypeId = foodTypeId;
         }
     }

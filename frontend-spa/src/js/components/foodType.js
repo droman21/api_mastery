@@ -6,7 +6,7 @@ export default function FoodType(foodType) {
         return `
                 <li>
                    <p> <img src="images/${recipe.image}" alt="image"> </p>
-                    <a class="foodType_name" id="${recipe.id}"  href= "#"> ${recipe.name} </a>                     
+                    <a class="foodType__name" id="${recipe.id}"  href= "#"> ${recipe.name} </a>                     
                 </li>
             `
     }).join("")}

@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using api_collection;
 
 namespace api_collection.Migrations
 {
     [DbContext(typeof(FoodContext))]
-    partial class FoodContextModelSnapshot : ModelSnapshot
+    [Migration("20200724182500_UpdatedSeedDataIngredients")]
+    partial class UpdatedSeedDataIngredients
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,9 +30,6 @@ namespace api_collection.Migrations
                     b.Property<string>("FoodCategory")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FoodImage")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("FoodTypes");
@@ -39,20 +38,17 @@ namespace api_collection.Migrations
                         new
                         {
                             Id = 1,
-                            FoodCategory = "Vegetarian",
-                            FoodImage = "veggies.jpg"
+                            FoodCategory = "Vegetarian"
                         },
                         new
                         {
                             Id = 2,
-                            FoodCategory = "Chicken",
-                            FoodImage = "chicken.jpg"
+                            FoodCategory = "Chicken"
                         },
                         new
                         {
                             Id = 3,
-                            FoodCategory = "Beef",
-                            FoodImage = "beef.jpg"
+                            FoodCategory = "Beef"
                         });
                 });
 
@@ -91,7 +87,7 @@ namespace api_collection.Migrations
                             CookTime = "20 minutes",
                             FoodTypeId = 1,
                             Ingredients = "Cottage Cheese Cubes, Curry Sauce, Peas",
-                            RecipeImage = "matarPaneer.jpg",
+                            RecipeImage = "",
                             RecipeName = "Matar Paneer"
                         },
                         new
@@ -100,7 +96,7 @@ namespace api_collection.Migrations
                             CookTime = "18 minutes",
                             FoodTypeId = 1,
                             Ingredients = "Black Beans, Quinoa, Corn, Brown Rice, Lettuce, Tomato, Guac, Brioche Bun",
-                            RecipeImage = "blackBeanBurger.jpg",
+                            RecipeImage = "",
                             RecipeName = "Black Bean Burger"
                         },
                         new
@@ -109,7 +105,7 @@ namespace api_collection.Migrations
                             CookTime = "15 minutes",
                             FoodTypeId = 1,
                             Ingredients = "Zucchini, Marinara Sauce, Squash, Onion",
-                            RecipeImage = "ratatouille.jpg",
+                            RecipeImage = "",
                             RecipeName = "Ratatouille"
                         },
                         new
@@ -118,7 +114,7 @@ namespace api_collection.Migrations
                             CookTime = "75 minutes",
                             FoodTypeId = 2,
                             Ingredients = "Chicken, Cheese, Beans, Tortillas, Enchilada Sauce, Rice, Chili",
-                            RecipeImage = "chickenEnchiladas.jpg",
+                            RecipeImage = "",
                             RecipeName = "Chicken Enchiladas"
                         },
                         new
@@ -127,7 +123,7 @@ namespace api_collection.Migrations
                             CookTime = "60 minutes",
                             FoodTypeId = 2,
                             Ingredients = "Chicken, Mozzarella Cheese, Shredded Parmesean Cheese, Red Sauce, Pasta, Panko, Butter",
-                            RecipeImage = "chickenParmesan.jpg",
+                            RecipeImage = "",
                             RecipeName = "Chicken Parmesean"
                         },
                         new
@@ -136,7 +132,7 @@ namespace api_collection.Migrations
                             CookTime = "35 minutes",
                             FoodTypeId = 2,
                             Ingredients = "Chicken, Grease, Flour, Cayenne Pepper, Salt, Pepper, Butter Milk",
-                            RecipeImage = "friedChicken.jpg",
+                            RecipeImage = "",
                             RecipeName = "Fried Chicken"
                         },
                         new
@@ -145,7 +141,7 @@ namespace api_collection.Migrations
                             CookTime = "17 minutes",
                             FoodTypeId = 3,
                             Ingredients = "Angus Beef, Bacon, Mayo, Ketchup, Lettuce, Tomato, Sesame Seed Bun",
-                            RecipeImage = "angusBurger.jpg",
+                            RecipeImage = "",
                             RecipeName = "Angus Burger"
                         },
                         new
@@ -154,7 +150,7 @@ namespace api_collection.Migrations
                             CookTime = "20 minutes",
                             FoodTypeId = 3,
                             Ingredients = "USDA Prime Beef",
-                            RecipeImage = "steak.jpg",
+                            RecipeImage = "",
                             RecipeName = "Steak"
                         },
                         new
@@ -163,7 +159,7 @@ namespace api_collection.Migrations
                             CookTime = "45 minutes",
                             FoodTypeId = 3,
                             Ingredients = "Beef, Carrots, Celery, Potatos, Bay Leaf, Rosemary, Salt, Pepper, Beef Stock, Flour",
-                            RecipeImage = "potRoast.jpg",
+                            RecipeImage = "",
                             RecipeName = "Pot Roast"
                         });
                 });

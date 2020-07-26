@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using api_collection;
 
 namespace api_collection.Migrations
 {
     [DbContext(typeof(FoodContext))]
-    partial class FoodContextModelSnapshot : ModelSnapshot
+    [Migration("20200726171518_Images")]
+    partial class Images
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,9 +30,6 @@ namespace api_collection.Migrations
                     b.Property<string>("FoodCategory")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FoodImage")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("FoodTypes");
@@ -39,20 +38,17 @@ namespace api_collection.Migrations
                         new
                         {
                             Id = 1,
-                            FoodCategory = "Vegetarian",
-                            FoodImage = "veggies.jpg"
+                            FoodCategory = "Vegetarian"
                         },
                         new
                         {
                             Id = 2,
-                            FoodCategory = "Chicken",
-                            FoodImage = "chicken.jpg"
+                            FoodCategory = "Chicken"
                         },
                         new
                         {
                             Id = 3,
-                            FoodCategory = "Beef",
-                            FoodImage = "beef.jpg"
+                            FoodCategory = "Beef"
                         });
                 });
 

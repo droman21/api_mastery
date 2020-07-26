@@ -15,49 +15,51 @@ namespace api_collection.Controllers
     [ApiController]
     public class FoodTypeController : ControllerBase
     {
-        IRepository<FoodType> foodRepo;
-        public FoodTypeController(IRepository<FoodType> foodRepo)
+        IRepository<FoodType> foodTypeRepo;
+        public FoodTypeController(IRepository<FoodType> foodTypeRepo)
         {
-            this.foodRepo = foodRepo;
+            this.foodTypeRepo = foodTypeRepo;
         }
 
-        // GET: api/Album
+        // GET: api/FoodType
         [HttpGet]
         public IEnumerable<FoodType> Get()
         {
-            return foodRepo.GetAll();
+            return foodTypeRepo.GetAll();
         }
 
-        // GET: api/Album/5
+        // GET: api/FoodType/5
         [HttpGet("{id}")]
         public FoodType Get(int id)
         {
-            return foodRepo.GetById(id);
+            return foodTypeRepo.GetById(id);
         }
 
-        // POST: api/Album
+        // POST: api/FoodType
         [HttpPost]
         public IEnumerable<FoodType> Post([FromBody] FoodType value)
         {
-            foodRepo.Create(value);
-            return foodRepo.GetAll();
+            foodTypeRepo.Create(value);
+            return foodTypeRepo.GetAll();
         }
 
-        // PUT: api/Album/5
+        // PUT: api/FoodType/5
         [HttpPut("{id}")]
-        public IEnumerable<FoodType> Put(int id, [FromBody] FoodType foodType)
+        public IEnumerable<FoodType> Put([FromBody] FoodType value)
         {
-            foodRepo.Update(foodType);
-            return foodRepo.GetAll();
+            FoodType foodType = foodTypeRepo.GetById(value.Id);
+            foodType.FoodCategory = value.FoodCategory;
+            foodTypeRepo.Update(foodType);
+            return foodTypeRepo.GetAll();
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
         public IEnumerable<FoodType> Delete(int id)
         {
-            var foodType = foodRepo.GetById(id);
-            foodRepo.Delete(foodType);
-            return foodRepo.GetAll();
+            var foodType = foodTypeRepo.GetById(id);
+            foodTypeRepo.Delete(foodType);
+            return foodTypeRepo.GetAll();
         }
     }
 
