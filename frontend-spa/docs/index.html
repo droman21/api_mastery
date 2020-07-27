@@ -4,10 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="FoodCSS.css">
+    <title>Bernard & Dan's CookBook</title>
 </head>
 <body>
-    <div id="app"></div>
+    <header class="header"></header>
+    <div class="app"></div>
+    <footer class="footer"></footer>
     <script src="main.js"></script>
+    <button onclick="topFunction()" id="myTopBtn" title="Go to Page Top">Back to Top</button>
+    <script>
+        var mybutton = document.getElementById("myTopBtn");
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+          } else {
+            mybutton.style.display = "none";
+          }
+        }
+        function topFunction() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+        }
+        </script>
 </body>
 </html>
