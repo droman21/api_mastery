@@ -21,7 +21,7 @@ export default function Recipes(recipes){
                 `
             }).join("")}
             <section class="create-recipe">
-            <button class="create-recipe__button">ADD RECIPE</button>
+            <button class="create-recipe__button">Add Recipe</button>
             </section>
             </section>
     `;
