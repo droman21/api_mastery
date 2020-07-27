@@ -20,10 +20,6 @@ export default function pageBuild() {
     footer();
     showFoodTypes();
     showRecipes();
-    showRecipesFunction();
-    showFoodTypesByRecipeID();
-    recipeLink();
-    foodTypeRecipesLink();
 
 }
 function header() {
@@ -68,7 +64,7 @@ function showFoodTypes() {
         .then(response => response.json())
         .then(foodTypes => {
             appDiv.innerHTML = FoodTypes(foodTypes);
-            foodTypesButton();
+            foodCategoryButton();
         })
         .catch(err => console.log(err))
 }
@@ -77,8 +73,8 @@ function foodTypesButton() {
     const FoodTypeElement = document.querySelectorAll('.foodType__name');
     FoodTypeElement.forEach(element => {
         element.addEventListener('click', function () {
-            const foodTypeId = element.id;
-            const foodTypeEndpoint = `https://localhost:44307/api/foodtype/${foodTypeId}`;
+            const id = element.id;
+            const foodTypeEndpoint = `https://localhost:44307/api/foodtype/${id}`;
             const foodTypeCallback = foodType => {
                 appDiv.innerHTML = FoodType(foodType);
                 recipeButton(foodTypeId, foodType.foodCategory);
@@ -89,13 +85,13 @@ function foodTypesButton() {
 }
 
 function showFoodTypesByRecipeID() {
-    const recipeByIDLink = document.querySelectorAll(".foodType__category");
+    const recipeByIDLink = document.querySelectorAll(".foodType__item");
     recipeByIDLink.forEach(element => {
       element.addEventListener('click', function () {
         const recipeId = element.id;
         fetch(`https://localhost:44307/api/recipe/${recipeId}`)
           .then(response => response.json())
-          .then(artist => appDiv.innerHTML = Recipe(recipe))
+          .then(recipe => appDiv.innerHTML = Recipe(recipe))
           .catch(err => console.log(err))
       })
     })
@@ -110,7 +106,6 @@ function recipesButton() {
             const recipeEndpoint = `https://localhost:44307/api/recipe/${recipeId}`;
             const recipeCallback = recipe => {
                 appDiv.innerHTML = Recipe(recipe);
-                recipeButton(recipeId, foodType.foodCategory);
             };
             apiActions.getRequest(recipeEndpoint, recipeCallback);
         })
@@ -134,7 +129,7 @@ appDiv.addEventListener("click", function(){
       const recipeCookTime = event.target.parentElement.querySelector('.create-recipe__cookTime').value;
       const recipeFoodType = event.target.parentElement.querySelector('.create-recipe__foodCategory').value;
   
-      console.log("Album name is" + albumName +" The artist is" + albumArtist);
+      console.log("Recipe name is" + recipeName +" The Food Category is" + recipeFoodType);
   
       var requestBody = {
         name: recipeName,
@@ -202,19 +197,98 @@ appDiv.addEventListener("click", function(){
         )
     }
 })
-
-function foodTypeRecipesLink() {
-    const foodTypeRecipesLink = document.querySelector('.foodType__category');
-    foodTypeRecipesLink.addEventListener('click', function () {
-        showRecipesFunction();
-    })
-}
 function showRecipesFunction() {
     fetch("https://localhost:44307/api/recipe")
         .then(response => response.json())
         .then(recipes => {
             appDiv.innerHTML = Recipes(recipes);
-            recipesButton();
+            
         })
         .catch(err => console.log(err))
+}
+
+appDiv.addEventListener("click", function () {
+    if(event.target.classList.contains('foodType__category')){
+      const id = document.querySelector(".foodType-recipes").value;
+        console.log(`FoodType ID is ${id}`);
+        fetch(`https://localhost:44307/api/foodtype/${id}`)
+          .then(response => response.json())
+          .then(foodType => appDiv.innerHTML = FoodType(foodType))
+          .catch(err => console.log(err))
+    }
+})
+
+function displayFoodTypeList_forEach() {
+    const foodTypeName = document.querySelector('.foodType__name');
+    foodTypeName.forEach(element => {
+        element.addEventListener('click', function () {
+            const foodTypeId = element.id;
+            console.log("foodtype:" + foodCategory);
+            const foodTypeEndpoint = `https://localhost:44307/api/foodtype/${foodTypeId}`;
+            console.log("Recipe List Displays");
+            const foodTypeCallback = foodType => {
+                apDiv.innerHTML = FoodType(foodType);
+                //recipeNameButton(foodTypeId, foodCategory)
+            };
+            apiActions.getRequest(foodTypeEndpoint, foodTypeCallback);
+        })
+    })
+}
+
+appDiv.addEventListener('click', function () {
+    if (event.target.classList.contains("create-recipe__submit")) {
+        const recipeName = event.target.parentElement.querySelector(".create-recipe__recipeName").value;
+        const recipeIngredients = event.target.parentElement.querySelector(".create-recipe__Ingredients").value;
+        const recipeCookTime = event.target.parentElement.querySelector(".create-recipe__cookTime").value;
+        const foodTypeId = event.target.parentElement.querySelector(".create-recipe__foodTypeId").value;
+        var requestBody = {
+            Name: recipeName,
+            Ingredients: recipeIngredients,
+            Cooktime: recipeCookTime,
+            FoodtypeId: foodTypeId
+        }
+        const foodTypeCallBack = () => {
+            apiActions.getRequest(
+                `https://localhost:44307/api/foodtype/${foodTypeId}`,
+                foodType => {
+                    appDiv.innerHTML = FoodType(foodType);
+                    recipesButton();
+                })
+        }
+        apiActions.postRequest(
+            "https://localhost:44307/api/recipe",
+            requestBody,
+            foodTypeCallBack
+        )
+    }
+})
+function foodCategoryButton() {
+    const FoodCategoryElement = document.querySelectorAll('.foodType__category');
+    FoodCategoryElement.forEach(element => {
+        element.addEventListener('click', function () {
+            console.log("category clicked")
+            const foodTypeId = element.id;
+            const foodTypeEndpoint = `https://localhost:44307/api/foodtype/${foodTypeId}`;
+            const foodTypeCallback = foodType => {
+                appDiv.innerHTML = FoodType(foodType);
+                recipeButton(foodTypeId, foodType.foodCategory);
+            };
+            apiActions.getRequest(foodTypeEndpoint, foodTypeCallback);
+        })
+    })
+}
+function recipeButton() {
+    const RecipeElement = document.querySelectorAll('.recipe__list');
+    RecipeElement.forEach(element => {
+        element.addEventListener('click', function () {
+            console.log("recipe name clicked" + recipeId);
+            const recipeId = element.id;
+            const recipeEndpoint = `https://localhost:44307/api/recipe/${recipeId}`;
+            const recipeCallback = recipe => {
+                appDiv.innerHTML = Recipe(recipe);
+                recipeButton(recipeId, foodType.foodCategory);
+            };
+            apiActions.getRequest(recipeEndpoint, recipeCallback);
+        })
+    })
 }
