@@ -48,9 +48,7 @@ namespace api_collection.Controllers
         [HttpPut("{id}")]
         public IEnumerable<Recipe> Put([FromBody] Recipe value)
         {
-            Recipe recipe = recipeRepo.GetById(value.RecipeId);
-            recipe.RecipeName = value.RecipeName;
-            recipeRepo.Update(recipe);
+            recipeRepo.Update(value);
             return recipeRepo.GetAll();
 
         }

@@ -24,5 +24,5 @@ export default function Recipes(recipes){
             <button class="create-recipe__button">Add Recipe</button>
             </section>
             </section>
-    `;
+    `
 }
