@@ -16,7 +16,7 @@ namespace api_collection.Models
         public string Ingredients { get; set; }
         public string CookTime { get; set; }
 
-        //[JsonIgnore]
+
         public virtual FoodType FoodType { get; set; }
         public int FoodTypeId { get; set; }
 

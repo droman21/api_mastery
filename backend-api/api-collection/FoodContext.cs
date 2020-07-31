@@ -16,8 +16,8 @@ namespace api_collection
         {
             var connectionString = "Server=(localdb)\\mssqllocaldb;Database=FoodCollection_Database;Trusted_Connection=True;";
 
-            optionsBuilder.UseSqlServer(connectionString)
-                          .UseLazyLoadingProxies();
+            optionsBuilder.UseSqlServer(connectionString);
+                         
 
             base.OnConfiguring(optionsBuilder);
         }
