@@ -6,7 +6,7 @@ export default function RecipePostSection(foodTypes){
         <select class="create-recipe__foodCategory" type="dropdown">
             ${foodTypes.map(foodType => {
                 return `
-                    <option class="create-recipe__recipeName" value="${foodType.foodTypeId}">${foodType.foodCategory}</option>
+                    <option class="create-recipe__recipeName" value="${foodType.id}">${foodType.foodCategory}</option>
                 `
             }).join("")}
         </select>
